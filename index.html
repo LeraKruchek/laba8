@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html ng-app="labApp" >
+<head>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script type="text/javascript" src="core.js"></script>
+
+</head>
+<body ng-controller="labCtrl">
+
+
+<div class="wrap">
+    <form ng-submit="sendAnswers(answers)" >
+        <textarea class="new" placeholder="Enter min temperature"  ng-model="new.max"></textarea><br/>
+        <textarea class="new" placeholder="Enter max temperature"  ng-model="new.min"></textarea><br/>
+        <textarea class="new" placeholder="Enter name"  ng-model="new.name"></textarea><br/>
+        <button class="btn btn-success pull-right new" ng-click="addNew(answers, new)">Add new</button>
+        <textarea placeholder="Enter temperature" required ng-model="answers.temp"></textarea><br/>
+        <input type="checkbox" name="weather" value="Snow" ng-model="answers.snow"/> Snow<br />
+        <input type="checkbox" name="weather" value="Smog" ng-model="answers.smog"/> Smog<br />
+        <input type="checkbox" name="weather" value="Rain" ng-model="answers.rain"/> Rain<br />
+        <input type="checkbox" name="weather" value="Sunny" ng-model="answers.sun"/> Sunny<br />
+        <input type="checkbox" name="weather" value="Humidity" ng-model="answers.humid"/> Humidity<br />
+        <input type="submit" class="btn btn-primary pull-right" value="Check input">
+
+    </form>
+    <button class="btn btn-info pull-right" ng-click="viewAll()">View all</button>
+    <button class="btn btn-success pull-right" ng-click="more()">More fields</button>
+</div>
+<div class="results">
+<p ng-show="found">Results:</p>
+<ul ng-show="found" ng-repeat="f in found">
+<p> {{f}}<p>
+</ul>
+</div>
+    <div class="all" ng-repeat="climate in climates">
+        <p>{{climate.name}}</p>
+        <p>Min temp: {{climate.min}} degrees</p>
+        <p>Max temp: {{climate.max}} degrees</p>
+        <p>Frequent snow: {{climate.snow}}</p>
+        <p>Frequent rain: {{climate.rain}}</p>
+        <p>Sunny weather: {{climate.sun}}</p>
+        <p>Humidity: {{climate.humid}}</p>
+    </div>
+
+
+
+
+
+
+
+</body>
+</html>

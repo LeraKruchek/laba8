@@ -1,0 +1,45 @@
+body{
+    font-size: 16px;
+}
+form{
+    margin: 0 auto;
+}
+.btn{
+    margin: 0 5px;
+}
+.wrap{
+    margin: 20px auto 0;
+    padding: 20px;
+    width: 500px;
+    background-color: #fafafa;
+    border: 1px solid #dedede;
+    border-radius: 5px;
+}
+.wrap:after{
+    content: '';
+    overflow: hidden;
+    clear: both;
+    display: block;
+    height: 0;
+}
+.all{
+    width: 500px;
+    display: none;
+    padding: 10px;
+    border: 1px solid #98c4f4;
+    border-radius: 5px;
+    margin: 10px auto;
+}
+.all p:first-child{
+    font-weight: bold;
+}
+.results{
+    width: 500px;
+    margin: 0 auto;
+    padding: 10px;
+
+}
+
+.new{
+    display: none;
+}
