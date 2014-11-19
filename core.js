@@ -9,7 +9,7 @@
         $scope.climates = [];
         $scope.answers = [];
         $scope.found = [];
-        $scope.new = [];
+        $scope.new = {};
         labProvider.getClimate().then(function(data) {
             $scope.climates = data;
         });
@@ -33,6 +33,7 @@
                 }
             );
             if ($scope.found.length === 0)  $scope.found.push('Nothing found');
+
         };
 
 
@@ -51,9 +52,11 @@
             $scope.new.sun = $scope.answers.sun || false;
             $scope.new.humid = $scope.answers.humid || false;
 
-            $http.post('/api/rules',$scope.new)
+            $http.post('/api/rules', $scope.new)
                 .success(function (data){
-                    console.log('ok');
+                    $scope.new = {}; // clear the form so our user is ready to enter another
+                    $scope.answers = [];
+                    $scope.climates = data;
                 })
         }
     }]);

@@ -11,12 +11,14 @@ var methodOverride = require('method-override');
 
 mongoose.connect('mongodb://lera:1234@ds051720.mongolab.com:51720/lab8');
 
-app.use(express.static(__dirname + '/public'));
+
 app.use(morgan('dev'));
+
+app.use(methodOverride());
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({'extended':'true'}));
 app.use(bodyParser.json());
 app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
-app.use(methodOverride());
 
 var Rule = mongoose.model('Rule',{
     name: String,
@@ -42,6 +44,7 @@ app.get('/api/rules', function(req, res) {
 });
 
 app.post('/api/rules', function(req,res){
+    console.log(1);
     Rule.create({
         name: req.body.name,
         max: req.body.max,
@@ -55,7 +58,6 @@ app.post('/api/rules', function(req,res){
         if (err)
             res.send(err);
 
-        // get and return all the todos after you create another
         Rule.find(function(err, rules) {
             if (err)
                 res.send(err)

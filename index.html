@@ -14,11 +14,11 @@
 
 
 <div class="wrap">
+    <button class="btn btn-success pull-right new" ng-click="addNew(answers, new)">Add new</button>
     <form ng-submit="sendAnswers(answers)" >
-        <textarea class="new" placeholder="Enter min temperature"  ng-model="new.max"></textarea><br/>
-        <textarea class="new" placeholder="Enter max temperature"  ng-model="new.min"></textarea><br/>
+        <textarea class="new" placeholder="Enter min temperature"  ng-model="new.min"></textarea><br/>
+        <textarea class="new" placeholder="Enter max temperature"  ng-model="new.max"></textarea><br/>
         <textarea class="new" placeholder="Enter name"  ng-model="new.name"></textarea><br/>
-        <button class="btn btn-success pull-right new" ng-click="addNew(answers, new)">Add new</button>
         <textarea placeholder="Enter temperature" required ng-model="answers.temp"></textarea><br/>
         <input type="checkbox" name="weather" value="Snow" ng-model="answers.snow"/> Snow<br />
         <input type="checkbox" name="weather" value="Smog" ng-model="answers.smog"/> Smog<br />
