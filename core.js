@@ -45,6 +45,19 @@
             $('.new').toggle();
         };
 
+         $('#checkboxes label').click(function(){
+            var ch = $(this).children().prop('checked');
+            $(this).toggleClass('active', ch);
+        });
+
+        $('#radio label').click(function(){
+            $('#radio label').each(function(ind, el){
+                $(el).removeClass('active');
+            })
+            $(this).addClass('active');
+        });
+
+
         $scope.addNew = function(){
             $scope.new.snow = $scope.answers.snow || false;
             $scope.new.smog = $scope.answers.smog || false;
