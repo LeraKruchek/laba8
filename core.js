@@ -20,7 +20,7 @@
                     $scope.found.push(val.name);
                     for (var key in val){
                         if( key === '_id' || key === 'name') continue;
-                        if(val.min >= $scope.answers.temp || val.max <= $scope.answers.temp ) {
+                        if(val.min > $scope.answers.temp || val.max < $scope.answers.temp ) {
                             $scope.found.pop();
                             break;
                         }
@@ -64,7 +64,7 @@
             $scope.new.rain = $scope.answers.rain || false;
             $scope.new.sun = $scope.answers.sun || false;
             $scope.new.humid = $scope.answers.humid || false;
-
+            $scope.new.location = $scope.answers.location;
             $http.post('/api/rules', $scope.new)
                 .success(function (data){
                     $scope.new = {}; // clear the form so our user is ready to enter another

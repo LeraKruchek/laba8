@@ -14,7 +14,7 @@
 
 
 <div class="wrap">
-    <button class="btn btn-success pull-right new" ng-click="addNew(answers, new)">Add new</button>
+    <button class="btn btn-success pull-right new" ng-click="addNew(answers, new)"><span class="glyphicon glyphicon-plus"></span>  Add new</button>
     <form ng-submit="sendAnswers(answers)" >
 
         <input type="text" class="form-control new" placeholder="Enter min temperature"  ng-model="new.min"></textarea><br/>
@@ -22,31 +22,31 @@
         <input type="text" class="form-control new" placeholder="Enter name"  ng-model="new.name"></textarea><br/>
         <input type="text" class="form-control" placeholder="Enter temperature" required ng-model="answers.temp"></textarea><br/>
         <div id="checkboxes">
-        <label class="btn btn-primary">
-        <input type="checkbox" name="weather" ng-model="answers.snow"/> Snow
-        </label>
-        <label class="btn btn-primary">
-        <input type="checkbox" name="weather"  ng-model="answers.smog"/> Smog
-        </label>
-        <label class="btn btn-primary">
-        <input type="checkbox" name="weather" value="Rain" ng-model="answers.rain"/> Rain
-        </label>
-        <label class="btn btn-primary">
-        <input type="checkbox" name="weather" value="Sunny" ng-model="answers.sun"/> Sunny
-        </label>
-        <label class="btn btn-primary">
-        <input type="checkbox" name="weather" value="Humidity" ng-model="answers.humid"/> Humidity<br />
-        </label>
+            <label class="btn btn-primary">
+                <input type="checkbox" name="weather" ng-model="answers.snow"/> Snow
+            </label>
+            <label class="btn btn-primary">
+                 <input type="checkbox" name="weather"  ng-model="answers.smog"/> Smog
+            </label>
+            <label class="btn btn-primary">
+                 <input type="checkbox" name="weather" value="Rain" ng-model="answers.rain"/> Rain
+            </label>
+            <label class="btn btn-primary">
+                 <input type="checkbox" name="weather" value="Sunny" ng-model="answers.sun"/> Sunny
+            </label>
+            <label class="btn btn-primary">
+                <input type="checkbox" name="weather" value="Humidity" ng-model="answers.humid"/> Humidity<br />
+            </label>
         </div>
         <div id="radio">
                 <label class="btn btn-primary active">
-                    <input type="radio" name="options" id="option1" value="sea" checked ng-model="answers.location"> Near sea
+                    <input type="radio" name="options" id="option1" value="sea" checked="true" autocomplete="off" ng-model="answers.location"> Near sea
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option2" value="desert" ng-model="answers.location"> Desert
+                    <input type="radio" name="options" id="option2" value="desert" autocomplete="off" ng-model="answers.location"> Desert
                 </label>
                 <label class="btn btn-primary">
-                    <input type="radio" name="options" id="option3" value="forest" ng-model="answers.location"> Forests
+                    <input type="radio" name="options" id="option3" value="forest" autocomplete="off" ng-model="answers.location"> Forests
                 </label>
         </div>
         <input type="submit" class="btn btn-danger pull-right" value="Check input">

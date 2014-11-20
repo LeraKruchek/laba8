@@ -28,7 +28,8 @@ var Rule = mongoose.model('Rule',{
     smog: Boolean,
     rain: Boolean,
     sun: Boolean,
-    humid: Boolean
+    humid: Boolean,
+    location: String
 });
 app.get('/api/rules', function(req, res) {
 
@@ -53,7 +54,8 @@ app.post('/api/rules', function(req,res){
         smog: req.body.smog,
         rain: req.body.rain,
         sun: req.body.sun,
-        humid: req.body.humid
+        humid: req.body.humid,
+        location: req.body.location
     }, function(err, rule) {
         if (err)
             res.send(err);
