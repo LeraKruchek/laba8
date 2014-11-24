@@ -7,6 +7,7 @@
 
     myApp.controller('labCtrl',['$scope', 'labProvider', '$http', function($scope, labProvider, $http){
         $scope.climates = [];
+        $scope.editable = {};
         $scope.answers = [];
         $scope.found = [];
         $scope.new = {};
@@ -73,7 +74,7 @@
                 })
         }
 
-        $scope.edit = function(ind, id){
+        $scope.edit = function(ind){
             var winH = $(document).height();
             var winW = $(document).width();
             var scrollTop = $(window).scrollTop();
@@ -83,12 +84,30 @@
         }
 
         $scope.closeModal = function(){
+            $scope.editable = {};
             $('#blackout').hide();
             $('#modal').hide();
         }
 
-        $scope.save = function(){
+        $scope.delete = function(id){
+            $http.delete('/api/rules/' + id) .success(function(data) {
+                $scope.climates = data;
+                console.log(data);
+            })
+                .error(function(data) {
+                    console.log('Error: ' + data);
+                });
+        }
 
+        $scope.save = function(){
+            $http.put('/api/rules/' + $scope.editable._id, $scope.editable)
+                .success(function (data){
+                    var ind = $scope.editable._id;
+                    $scope.editable = {}; // clear the form so our user is ready to enter another
+                    $scope.climates = data;
+                    $('#blackout').hide();
+                    $('#modal').hide();
+                })
         }
     }]);
 

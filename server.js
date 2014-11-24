@@ -61,7 +61,31 @@ app.delete('/api/rules/:rule_id', function(req, res) {
     });
 });
 
+app.put('/api/rules/:rule_id', function(req, res){
+     Rule.update({
+         _id : req.params.rule_id
+    },
+         {  $set:{
+            name: req.body.name,
+            max: req.body.max,
+            min: req.body.min,
+            snow: req.body.snow,
+            smog: req.body.smog,
+            rain: req.body.rain,
+            sun: req.body.sun,
+            humid: req.body.humid,
+            location: req.body.location
+        }},
+     function(err, rule){
+         if (err) console.log('error');
+     })
+    Rule.find(function(err, rules) {
+        if (err)
+            res.send(err)
+        res.json(rules);
+    });
 
+})
 
 app.post('/api/rules', function(req,res){
     console.log(1);
@@ -97,5 +121,5 @@ app.get('/style.css', function(req, res) {
 app.get('/core.js', function(req, res) {
     res.sendfile('core.js');
 });
-app.listen(8082);
-console.log("App listening on port 8082");
+app.listen(8083);
+console.log("App listening on port 8083");

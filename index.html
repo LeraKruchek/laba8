@@ -17,10 +17,10 @@
     <button class="btn btn-success pull-right new" ng-click="addNew(answers, new)"><span class="glyphicon glyphicon-plus"></span>  Add new</button>
     <form ng-submit="sendAnswers(answers)" >
 
-        <input type="text" class="form-control new" placeholder="Enter min temperature"  ng-model="new.min"></textarea><br/>
-        <input type="text" class="form-control new" placeholder="Enter max temperature"  ng-model="new.max"></textarea><br/>
-        <input type="text" class="form-control new" placeholder="Enter name"  ng-model="new.name"></textarea><br/>
-        <input type="text" class="form-control" placeholder="Enter temperature" required ng-model="answers.temp"></textarea><br/>
+        <input type="text" class="form-control new" placeholder="Enter min temperature"  ng-model="new.min"><br/>
+        <input type="text" class="form-control new" placeholder="Enter max temperature"  ng-model="new.max"><br/>
+        <input type="text" class="form-control new" placeholder="Enter name"  ng-model="new.name"><br/>
+        <input type="text" class="form-control" placeholder="Enter temperature" required ng-model="answers.temp"><br/>
         <div id="checkboxes">
             <label class="btn btn-primary">
                 <input type="checkbox" name="weather" ng-model="answers.snow"/> Snow
@@ -70,7 +70,55 @@
         <p>Sunny weather: {{climate.sun}}</p>
         <p>Humidity: {{climate.humid}}</p>
         <p>Location: Near {{climate.location}}</p>
+        <button class="btn btn-warning pull-right" ng-click="delete(climate._id)">Delete</button>
+        <button class="btn btn-success pull-right" ng-click="edit($index)">Edit</button>
     </div>
+
+<div id="modal">
+    <div class="modal-header">
+        <div class="close" ng-click="closeModal()">X</div>
+        <h3>Edit rule</h3>
+    </div>
+    <div class="modal-body">
+        <form name="editForm" ng-submit="save(editable)" >
+            <fieldset class="form-group">
+                <label>Name</label>
+                <input type="text" class="form-control" ng-model="editable.name">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Min temp</label>
+                <input type="text" class="form-control" ng-model="editable.min">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Max temp</label>
+                <input type="text" class="form-control" ng-model="editable.max">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Frequent snow</label>
+                <input type="checkbox" class="form-control" ng-model="editable.snow">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Frequent rain</label>
+                <input type="checkbox" class="form-control" ng-model="editable.rain">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Sunny weather</label>
+                <input type="checkbox" class="form-control" ng-model="editable.sun">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Humidity</label>
+                <input type="checkbox" class="form-control" ng-model="editable.humid">
+            </fieldset>
+            <fieldset class="form-group">
+                <label>Location</label>
+                <input type="checkbox" class="form-control" ng-model="editable.location">
+            </fieldset>
+            <input type="submit" class="btn btn-success pull-right" value="Save"/>
+        </form>
+
+    </div>
+</div>
+<div id="blackout"></div>
 
 
 </body>
