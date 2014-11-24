@@ -72,6 +72,15 @@
                     $scope.climates = data;
                 })
         }
+
+        $scope.delete = function(id){
+            $http.delete('/api/rules/' + id)
+                .success(function(data){
+                    $scope.climates = data;
+                    console.log('deleted');
+                })
+
+        }
     }]);
 
     myApp.provider('labProvider',function() {

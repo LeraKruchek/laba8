@@ -40,6 +40,13 @@ form{
     border-radius: 5px;
     margin: 10px auto;
 }
+.all:after{
+    content: '';
+    clear: both;
+    overflow: hidden;
+    display: block;
+    height: 0;
+}
 .all p:first-child{
     font-weight: bold;
 }
