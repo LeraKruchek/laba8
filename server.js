@@ -44,6 +44,7 @@ app.get('/api/rules', function(req, res) {
     });
 });
 
+
 app.delete('/api/rules/:rule_id', function(req, res) {
     Rule.remove({
         _id : req.params.rule_id
@@ -59,6 +60,9 @@ app.delete('/api/rules/:rule_id', function(req, res) {
         });
     });
 });
+
+
+
 app.post('/api/rules', function(req,res){
     console.log(1);
     Rule.create({

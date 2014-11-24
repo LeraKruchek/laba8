@@ -73,12 +73,21 @@
                 })
         }
 
-        $scope.delete = function(id){
-            $http.delete('/api/rules/' + id)
-                .success(function(data){
-                    $scope.climates = data;
-                    console.log('deleted');
-                })
+        $scope.edit = function(ind, id){
+            var winH = $(document).height();
+            var winW = $(document).width();
+            var scrollTop = $(window).scrollTop();
+            $('#blackout').width(winW).height(winH).show();
+            $('#modal').css('top', scrollTop + 150).show();
+            $scope.editable = $scope.climates[ind];
+        }
+
+        $scope.closeModal = function(){
+            $('#blackout').hide();
+            $('#modal').hide();
+        }
+
+        $scope.save = function(){
 
         }
     }]);
